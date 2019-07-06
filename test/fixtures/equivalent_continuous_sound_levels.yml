@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  laeq: 
+  start_at: 
+  end_at: 
+  duration: 1
+
+two:
+  laeq: 
+  start_at: 
+  end_at: 
+  duration: 1

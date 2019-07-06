@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spl: 
+  spl: 
+  filter: MyString
+  max_mode: false
+  measured_at: 2019-06-07 01:25:56
+
+two:
+  spl: 
+  spl: 
+  filter: MyString
+  max_mode: false
+  measured_at: 2019-06-07 01:25:56

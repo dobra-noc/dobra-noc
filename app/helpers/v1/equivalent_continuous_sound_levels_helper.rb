@@ -1,0 +1,2 @@
+module V1::EquivalentContinuousSoundLevelsHelper
+end
