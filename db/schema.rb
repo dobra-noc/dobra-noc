@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2019_06_21_140354) do
     t.integer "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["duration"], name: "index_equivalent_continuous_sound_levels_on_duration", unique: true
+    t.index ["end_at"], name: "index_equivalent_continuous_sound_levels_on_end_at", unique: true
+    t.index ["start_at"], name: "index_equivalent_continuous_sound_levels_on_start_at", unique: true
   end
 
   create_table "sonometer_records", force: :cascade do |t|

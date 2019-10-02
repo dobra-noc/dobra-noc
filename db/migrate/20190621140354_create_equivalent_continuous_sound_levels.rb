@@ -6,9 +6,10 @@ class CreateEquivalentContinuousSoundLevels < ActiveRecord::Migration[5.2]
       t.timestamp :end_at, presence: true
       t.integer :duration, presence: true
 
+      t.index :start_at, unique: true
+      t.index :end_at, unique: true
+      t.index :duration, unique: true
       t.timestamps
     end
-
-    add_index :start_at, [:end_at, :duration], unique: true
   end
 end
