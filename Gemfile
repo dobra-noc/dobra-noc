@@ -26,6 +26,7 @@ gem 'fast_jsonapi', '>= 1.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'gm3156', '>= 0.0.3'
+gem 'rpi_gpio'
 gem 'webpacker'
 gem 'foreman'
 gem 'rufus-scheduler'
@@ -50,4 +51,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 end
-
