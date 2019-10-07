@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 4555159b7da9813235395d271b1b65a32407086b
+  branch: master
+  specs:
+    faker (2.5.0)
+      i18n (>= 1.6, < 1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -282,6 +290,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara (>= 2.15)
   chromedriver-helper
+  faker!
   fast_jsonapi (>= 1.5)
   foreman
   gm3156 (>= 0.0.3)
@@ -307,4 +316,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   2.0.1
+   2.0.2

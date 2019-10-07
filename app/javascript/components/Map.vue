@@ -1,7 +1,12 @@
 <template>
         <l-map :zoom="zoom" :center="center" style="width: 100%; height:400px">
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-            <l-marker :lat-lng="marker"></l-marker>
+            <l-marker v-for="marker in markers"
+               :key="marker.id"
+               :lat-lng="[marker.latitude, marker.longitude]"
+               :icon="marker.icon"
+               :tooltip="marker.tooltip">
+            </l-marker>
         </l-map>
 </template>
 
@@ -14,13 +19,24 @@
             return {
                 map: null,
                 tileLayer: null,
+                locations: null,
                 layers: [],
                 zoom: 18,
                 center: L.latLng(50.0523853, 19.9441151),
                 url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-                marker: L.latLng(50.0523853, 19.9441151),
+                markers: []
             }
+          },
+          async mounted () {
+              this.loaded = false
+              try {
+                await fetch('/api/v1/locations').then(response=>response.json()).then((data) => this.markers = data)
+                this.loaded = true
+              } catch (e) {
+                console.log(e);
+              }
+          }
         }
-    }
+
 </script>
