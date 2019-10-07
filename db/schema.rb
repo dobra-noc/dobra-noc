@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 2019_10_04_100938) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "location_id"
-    t.index ["duration"], name: "index_equivalent_continuous_sound_levels_on_duration", unique: true
-    t.index ["end_at"], name: "index_equivalent_continuous_sound_levels_on_end_at", unique: true
     t.index ["location_id"], name: "index_equivalent_continuous_sound_levels_on_location_id"
-    t.index ["start_at"], name: "index_equivalent_continuous_sound_levels_on_start_at", unique: true
+    t.index ["start_at", "end_at", "duration"], name: "date_unique_index", unique: true
   end
 
   create_table "locations", force: :cascade do |t|
