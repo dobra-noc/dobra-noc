@@ -9,7 +9,11 @@ class CreateEquivalentContinuousSoundLevels < ActiveRecord::Migration[5.2]
       t.integer :duration, presence: true
 
       t.timestamps
+<<<<<<< HEAD
       t.index %i[start_at end_at duration], unique: true, name: 'date_unique_index'
+=======
+      t.index [:start_at, :end_at, :duration], unique: true, name: "date_unique_index"
+>>>>>>> fix index errors
     end
   end
 end

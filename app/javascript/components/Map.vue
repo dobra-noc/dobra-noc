@@ -8,6 +8,7 @@
                :tooltip="marker.tooltip"
                @click="sendLocationId(marker.id)">
             </l-marker>
+
         </l-map>
 </template>
 
