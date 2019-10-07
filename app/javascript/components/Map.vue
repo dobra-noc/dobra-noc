@@ -4,9 +4,10 @@
             <l-marker v-for="marker in markers"
                :key="marker.id"
                :lat-lng="[marker.latitude, marker.longitude]"
+               :icon="marker.icon"
+               :tooltip="marker.tooltip"
                @click="sendLocationId(marker.id)">
             </l-marker>
-
         </l-map>
 </template>
 
