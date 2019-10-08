@@ -27,17 +27,19 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'gm3156', '>= 0.0.3'
-gem 'rpi_gpio'
 gem 'webpacker'
-gem 'foreman'
 gem 'rufus-scheduler'
 gem 'foreman'
 
-group :development, :test do
+group :development, :test, :raspbian do
   gem 'pry-byebug', '>= 3.7.0'
 end
 
-group :development do
+group :raspbian do
+  gem 'rpi_gpio'
+end
+
+group :development, :raspbian do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
