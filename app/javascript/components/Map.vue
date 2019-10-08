@@ -24,7 +24,6 @@
             return {
                 map: null,
                 tileLayer: null,
-                locations: null,
                 layers: [],
                 zoom: 18,
                 center: L.latLng(50.0523853, 19.9441151),
