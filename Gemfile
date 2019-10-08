@@ -27,6 +27,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'gm3156', '>= 0.0.3'
+gem 'rpi_gpio'
 gem 'webpacker'
 gem 'foreman'
 gem 'rufus-scheduler'
