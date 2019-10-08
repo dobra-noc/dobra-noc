@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Location.delete_all
-p 'Adding locations'
 25.times do
   Location.create(
     address: Faker::Address.street_address,
@@ -14,11 +13,10 @@ p 'Adding locations'
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude
   )
-  print '*'
 end
+p "#{Location.count} locations was created."
 
 EquivalentContinuousSoundLevel.delete_all
-p 'Adding Equivalent Continuous Sound Level'
 date = DateTime.parse Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default)
 400.times do |i|
 
@@ -32,5 +30,5 @@ date = DateTime.parse Faker::Time.between(from: DateTime.now - 1, to: DateTime.n
     start_at: start_at,
     end_at: end_at
   )
-  print '*'
 end
+p "#{EquivalentContinuousSoundLevel.count} EquivalentContinuousSoundLevels was created."
