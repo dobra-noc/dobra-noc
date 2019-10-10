@@ -1179,6 +1179,11 @@ babel-plugin-macros@^2.5.0:
     cosmiconfig "^5.2.0"
     resolve "^1.10.0"
 
+babel-plugin-on-demand-import@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-on-demand-import/-/babel-plugin-on-demand-import-1.1.1.tgz#dda44f3572c04f0fb2769fa7f98312f9917e61b0"
+  integrity sha512-y55Dw837gm6cyg+hnfWDGyChVoozEvjQglTW3Bfiz/ucuXl7W2T034i+5yBzU4VhByh9UZLJmnzHL6lnt30nmg==
+
 babel-runtime@^5.8.0:
   version "5.8.38"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-5.8.38.tgz#1c0b02eb63312f5f087ff20450827b425c9d4c19"
@@ -6851,6 +6856,11 @@ uuid@^3.0.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
+v2-datepicker@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/v2-datepicker/-/v2-datepicker-3.1.1.tgz#1f7583695e30c08f7ddad83acf2f233ed2b38b0e"
+  integrity sha512-8AasUMiok5ZLhvbL4wImjiFg/ftRnbqdFoThdLSEgVN7nEU9MfIjQ2irK3+VGcpjZr436RX3LtrwsU4vnsaOig==
 
 v8-compile-cache@^2.0.2:
   version "2.0.3"

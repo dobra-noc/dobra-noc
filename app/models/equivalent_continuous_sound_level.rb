@@ -8,5 +8,4 @@ class EquivalentContinuousSoundLevel < ApplicationRecord
   validates :duration, presence: true
 
   scope :between_timestamps, -> (min, max) { where(start_at: (min..max), end_at: (min..max) ) }
-
 end
