@@ -6,7 +6,7 @@
     "babel-plugin-on-demand-import": "^1.1.1",
     "chart.js": "^2.8.0",
     "leaflet": "^1.5.1",
-    "v2-datepicker": "^3.1.1",
+    "v-calendar": "^0.9.7",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-loader": "^15.7.0",

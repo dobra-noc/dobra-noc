@@ -21,8 +21,9 @@ module Api
 
     def get_by_day
       data = Location.find(params[:id]).equivalent_continuous_sound_levels.hour.where(
-        start_at: return_day_with_day_time(params[:day], params[:day_time])
+        start_at: return_daterange(params[:day].to_date)
       )
+      p params[:day]
       render json: data.as_json(only: [:start_at, :laeq], :include => { location: { only: :address } })
     end
 
@@ -33,13 +34,8 @@ module Api
 
     private
 
-    def return_day_with_day_time(day, day_time)
-      day = day.to_date
-      if day_time == 'night'
-        day + 22.hours .. day + 1.day + 6.hours
-      elsif day_time == "day"
-        day + 6.hours .. day + 22.hours
-      end
+    def return_daterange(day)
+      day + 6.hours .. day + 1.day + 6.hours
     end
   end
 end
