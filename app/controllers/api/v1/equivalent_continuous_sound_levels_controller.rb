@@ -7,15 +7,28 @@ module Api
 
     def show
       data = Location.find(params[:id]).equivalent_continuous_sound_levels.hour
-      render json: data.as_json(only: [:start_at, :laeq], :include => { location: { only: :address } })
+      dates = Location.find(params[:id])
+                     .equivalent_continuous_sound_levels
+                     .pluck(:start_at)
+                     .map(&:to_date)
+                     .uniq
+                     .map { |x| x.strftime('%F') }
+      render json: [
+        data.as_json(only: [:start_at, :laeq], :include => { location: { only: :address } }),
+        dates: dates.as_json()
+      ]
     end
 
     def get_by_day
       data = Location.find(params[:id]).equivalent_continuous_sound_levels.hour.where(
         start_at: return_day_with_day_time(params[:day], params[:day_time])
       )
-
       render json: data.as_json(only: [:start_at, :laeq], :include => { location: { only: :address } })
+    end
+
+    def get_available_days_for_location
+
+      render json: data.as_json()
     end
 
     private
