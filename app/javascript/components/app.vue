@@ -7,17 +7,11 @@
       </div>
     </header>
     <article class="content">
-      <span class="marker-info">
-        <h1>{{ address }}</h1>
-        <Datepicker :available-dates=availableDates></Datepicker>
-        <span class="day-time-swith">
-          {{ dayTime == true ? 'day' : 'night' }}
-          <label class="switch">
-            <input type="checkbox" v-model="dayTime">
-            <span class="slider round"></span>
-          </label>
-        </span>
-      </span>
+      <h1>{{ address }}</h1>
+      <Datepicker
+        :available-dates="availableDates"
+        @date-value="getDate"/>
+      </Datepicker>
       <section class="chart">
         <line-chart
                 v-if="loaded"
@@ -44,10 +38,12 @@
         name: 'LineChartContainer',
         components: { LineChart, Map, Datepicker },
         data: () => ({
+
         locationId: null,
-        address: null,
-        dayTime: true,
         availableDates: null,
+        date: null,
+
+        address: null,
         loaded: false,
         chart_data: null,
         chart_options: {
@@ -81,6 +77,28 @@
             this.chart_data = {
                 datasets: [{
                     data: data[0].map(function (o) {
+                        return {t: new Date(o.start_at), y: o.laeq}
+                    }),
+                    fill: false,
+                    label: "Equivalent continuous sound level",
+                    backgroundColor: "#115555",
+                    borderColor: "#115555"
+                }]
+            }
+            this.loaded = true
+        } catch (e) {
+            console.error(e)
+        }
+      },
+      async getDate(value) {
+        this.loaded = false
+        this.date = await value
+        try {
+            const response = await fetch(`/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`)
+            const data = await response.json()
+            this.chart_data = {
+                datasets: [{
+                    data: data.map(function (o) {
                         return {t: new Date(o.start_at), y: o.laeq}
                     }),
                     fill: false,
@@ -148,65 +166,5 @@
   }
   .chart {
     margin-bottom: 50px
-  }
-
-  /* Day Time switch */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgb(29,41,52);
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-
-  input:checked + .slider {
-    background-color: rgb(64,166,119);
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
-    border-radius: 50%;
   }
 </style>

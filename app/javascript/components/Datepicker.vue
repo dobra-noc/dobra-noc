@@ -1,43 +1,45 @@
 <template>
-  <v2-datepicker v-model="date" format="yyyy-MM-DD" lang="en" :picker-options="pickerOptions"></v2-datepicker>
+  <!-- <v-calendar :attributes='attrs'>
+  </v-calendar> -->
+  <v-date-picker
+    v-model='selectedValue'
+    :disabled-dates='[ { start: null, end: null}]'
+    :available-dates='availableDates'
+    @input="sendDate(selectedValue)"
+    :max-date="availableDates[availableDates.length-1]"
+    :min-date="availableDates[0]"
+    is-inline>
+  </v-date-picker>
 </template>
 
 <script>
-  import 'v2-datepicker/lib/index.css'
-  import Vue from 'vue';
-  import { DatePicker } from 'v2-datepicker';
-  Vue.use(DatePicker);
+  import { setupCalendar, DatePicker} from 'v-calendar'
+  import 'v-calendar/lib/v-calendar.min.css';
+  setupCalendar({
+    firstDayOfWeek: 2
+  });
 
   export default {
-    components: { 'v2-datepicker' : DatePicker },
+    components: { 'v-date-picker' : DatePicker },
     props: { availableDates: Array },
-    data () {
+    methods: {
+      sendDate (date) {
+        this.$emit('date-value', date)
+      }
+    },
+    data() {
       return {
-          date: null,
-          pickerOptions: {
-              shortcuts: [{
-                  text: 'Today',
-                  onClick (picker) {
-                      picker.$emit('pick', new Date());
-                  }
-              }, {
-                  text: 'Yesterday',
-                  onClick (picker) {
-                      const date = new Date();
-                      date.setTime(date.getTime() - 3600 * 1000 * 24);
-                      picker.$emit('pick', date);
-                  }
-              }, {
-                  text: 'A week ago',
-                  onClick (picker) {
-                      const date = new Date();
-                      date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-                      picker.$emit('pick', date);
-                  }
-              }
-            ]
+        selectedValue: new Date(),
+        attrs: [
+        {
+          key: 'today',
+          dates: "19-10-2019",
+          highlight: {
+            backgroundColor: '#ff8080',
           }
         }
+      ],
       }
-    }
+    },
+  }
 </script>
