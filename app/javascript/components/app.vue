@@ -80,30 +80,8 @@
             console.error(e)
         }
       }
-    },
-    async mounted () {
-        this.loaded = false
-        try {
-            const response = await fetch("/api/v1/equivalent_continuous_sound_levels")
-            const data = await response.json()
-            this.address = data[0]['location']['address']
-            this.chart_data = {
-                datasets: [{
-                    data: data.map(function (o) {
-                        return {t: new Date(o.start_at), y: o.laeq}
-                    }),
-                    fill: false,
-                    label: "Equivalent continuous sound level",
-                    backgroundColor: "#115555",
-                    borderColor: "#115555"
-                }]
-            }
-            this.loaded = true
-        } catch (e) {
-            console.error(e)
-        }
     }
-    }
+  }
 </script>
 
 <style>
