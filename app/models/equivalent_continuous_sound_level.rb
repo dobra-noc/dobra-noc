@@ -1,9 +1,9 @@
 class EquivalentContinuousSoundLevel < ApplicationRecord
-
+  belongs_to :location
   enum duration: [:hour]
 
   validates :start_at, presence: true, uniqueness: { scope: [:end_at, :duration] }
-  validates :end_at, presence: true
+  validates :end_at, :location_id, presence: true
   validates :laeq, presence: true, numericality: { greater_than: 0 }
   validates :duration, presence: true
 

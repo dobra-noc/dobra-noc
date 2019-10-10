@@ -14,4 +14,16 @@
 ## Running
 
 1. Connect GM3156 sonometer via USB if you want to collect records.
-2. As far as I remember just run `foreman`. It uses `Procfile` to run both backend (rails) and frontend (webpack-dev-server) at once. 
+2. Run `foreman start`. It uses `Procfile` to run both backend (rails) and frontend (webpack-dev-server) at once.
+
+## Location env file config
+
+1. Create file `location_env_variables.yml` in `config/`
+2. Fill file with data like in example
+
+```
+ADDRESS: 'Your_address'
+DESCRIPTION: 'Description_for_your_location'
+LONGITUDE: 'Longitude_for_your_location'
+LATITUDE: 'Latitude_for_your_location'
+```
