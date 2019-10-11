@@ -1,23 +1,22 @@
 <template>
-  <!-- <v-calendar :attributes='attrs'>
-  </v-calendar> -->
   <v-date-picker
     v-model='selectedValue'
     :disabled-dates='[ { start: null, end: null}]'
     :available-dates='availableDates'
     @input="sendDate(selectedValue)"
-    :max-date="availableDates[availableDates.length-1]"
-    :min-date="availableDates[0]"
+    :max-date="new Date(availableDates[availableDates.length-1])"
+    :min-date="new Date(availableDates[0])"
     is-inline>
   </v-date-picker>
 </template>
 
 <script>
   import { setupCalendar, DatePicker} from 'v-calendar'
-  import 'v-calendar/lib/v-calendar.min.css';
+  import 'v-calendar/lib/v-calendar.min.css'
+
   setupCalendar({
     firstDayOfWeek: 2
-  });
+  })
 
   export default {
     components: { 'v-date-picker' : DatePicker },
