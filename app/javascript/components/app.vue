@@ -10,7 +10,8 @@
       <h1>{{ address }}</h1>
       <Datepicker
         :available-dates="availableDates"
-        @date-value="getDate"/>
+        @date-value="getDate"
+        v-if="loaded">
       </Datepicker>
       <section class="chart">
         <line-chart
