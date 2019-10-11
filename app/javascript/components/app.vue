@@ -7,11 +7,7 @@
     </header>
     <article class="content">
       <h1>{{ address }}</h1>
-      <Datepicker
-        :available-dates="availableDates"
-        @date-value="getDate"
-        v-if="loaded"
-      >
+      <Datepicker :available-dates="availableDates" @date-value="getDate">
       </Datepicker>
       <section class="chart">
         <line-chart
