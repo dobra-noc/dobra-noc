@@ -7,6 +7,7 @@
     :max-date="new Date(availableDates[availableDates.length - 1])"
     :min-date="new Date(availableDates[0])"
     is-inline
+    v-if="availableDates"
   >
   </v-date-picker>
 </template>
@@ -44,6 +45,9 @@ export default {
         }
       ]
     };
+  },
+  mounted() {
+    this.loaded = true;
   }
 };
 </script>
