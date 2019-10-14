@@ -29,15 +29,9 @@ export default {
   },
   methods: {
     navigation: function(type) {
-      let formattedCurrentDate =
-        this.currentDate.getFullYear() +
-        "-" +
-        (this.currentDate.getMonth() + 1) +
-        "-" +
-        this.currentDate.getDate();
+      let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate();
       if (type == "previous") {
-        let navigationPage =
-          this.availableDates.indexOf(formattedCurrentDate) - 1;
+        let navigationPage = this.availableDates.indexOf(formattedCurrentDate) - 1;
         if (navigationPage <= 0) {
           this.$emit("navigation-date", 0);
         } else {
@@ -61,12 +55,7 @@ export default {
   },
   watch: {
     currentDate: function() {
-      let formattedCurrentDate =
-        this.currentDate.getFullYear() +
-        "-" +
-        (this.currentDate.getMonth() + 1) +
-        "-" +
-        this.currentDate.getDate();
+      let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate();
       let navigationPage = this.availableDates.indexOf(formattedCurrentDate);
 
       if (navigationPage > 0) this.isDisabledPrevious = false;
