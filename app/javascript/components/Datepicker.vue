@@ -1,21 +1,22 @@
 <template>
-  <div class="date-container" v-if="availableDates">
+  <div
+    v-if="availableDates"
+    class="date-container"
+  >
     <v-date-picker
       v-model="selectedValue"
       :disabled-dates="[{ start: null, end: null }]"
       :available-dates="availableDates"
-      @input="sendDate(selectedValue)"
       :max-date="new Date(availableDates[availableDates.length - 1])"
       :min-date="new Date(availableDates[0])"
       is-inline
-    >
-    </v-date-picker>
+      @input="sendDate(selectedValue)"
+    />
     <CalendarNavigation
       :available-dates="availableDates"
       :current-date="selectedValue"
       @navigation-date="setDate"
-    >
-    </CalendarNavigation>
+    />
   </div>
 </template>
 

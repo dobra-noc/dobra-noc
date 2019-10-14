@@ -1,13 +1,19 @@
 <template>
-  <l-map :zoom="zoom" :center="center" style="width: 100%; height:400px">
-    <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+  <l-map
+    :zoom="zoom"
+    :center="center"
+    style="width: 100%; height:400px"
+  >
+    <l-tile-layer
+      :url="url"
+      :attribution="attribution"
+    />
     <l-marker
       v-for="marker in markers"
       :key="marker.id"
       :lat-lng="[marker.latitude, marker.longitude]"
       @click="sendLocationId(marker.id)"
-    >
-    </l-marker>
+    />
   </l-map>
 </template>
 
