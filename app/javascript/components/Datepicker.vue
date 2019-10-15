@@ -38,15 +38,6 @@ export default {
   props: {
     availableDates: Array
   },
-  methods: {
-    sendDate(date) {
-      this.$emit("date-value", date);
-    },
-    setDate(value) {
-      this.selectedValue = new Date(this.availableDates[value]);
-      this.sendDate(this.selectedValue);
-    }
-  },
   data() {
     return {
       selectedValue: new Date(),
@@ -60,6 +51,15 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    sendDate(date) {
+      this.$emit("date-value", date);
+    },
+    setDate(value) {
+      this.selectedValue = new Date(this.availableDates[value]);
+      this.sendDate(this.selectedValue);
+    }
   }
 };
 </script>
