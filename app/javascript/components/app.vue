@@ -6,11 +6,11 @@
       </div>
     </header>
     <article class="content">
+      <h1>{{ address }}</h1>
       <Datepicker
         :available-dates="availableDates"
         @date-value="getDate"
       />
-      <h1>{{ address }}</h1>
       <section class="chart">
         <line-chart
           v-if="loaded"

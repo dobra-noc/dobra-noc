@@ -27,6 +27,27 @@ export default {
     availableDates: Array,
     currentDate: Date
   },
+  data() {
+    return {
+      isDisabledPrevious: false,
+      isDisabledNext: false
+    };
+  },
+  watch: {
+    currentDate: function() {
+      let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate();
+      let navigationPage = this.availableDates.indexOf(formattedCurrentDate);
+
+      if (navigationPage > 0)
+        this.isDisabledPrevious = false;
+      if (navigationPage < this.availableDates.length - 1)
+        this.isDisabledNext = false;
+      if (navigationPage <= 0)
+        this.isDisabledPrevious = true;
+      if (navigationPage == this.availableDates.length - 1)
+        this.isDisabledNext = true;
+    }
+  },
   methods: {
     navigation: function(type) {
       let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate();
@@ -39,8 +60,7 @@ export default {
         }
       }
       if (type == "next") {
-        let navigationPage =
-          this.availableDates.indexOf(formattedCurrentDate) + 1;
+        let navigationPage = this.availableDates.indexOf(formattedCurrentDate) + 1;
 
         if (
           navigationPage <= this.availableDates.length - 1 &&
@@ -52,25 +72,6 @@ export default {
         }
       }
     }
-  },
-  watch: {
-    currentDate: function() {
-      let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate();
-      let navigationPage = this.availableDates.indexOf(formattedCurrentDate);
-
-      if (navigationPage > 0) this.isDisabledPrevious = false;
-      if (navigationPage < this.availableDates.length - 1)
-        this.isDisabledNext = false;
-      if (navigationPage <= 0) this.isDisabledPrevious = true;
-      if (navigationPage == this.availableDates.length - 1)
-        this.isDisabledNext = true;
-    }
-  },
-  data() {
-    return {
-      isDisabledPrevious: false,
-      isDisabledNext: false
-    };
   }
 };
 </script>
