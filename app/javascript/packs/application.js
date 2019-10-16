@@ -1,7 +1,11 @@
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue'
 import App from '../components/app.vue'
+import router from '../router.js'
 import { Icon }  from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import Router from 'vue-router';
+
+Vue.use(Router);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('app'))
@@ -15,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const app = new Vue({
-    el: 'app',
-    template: '<App/>',
-    components: { App }
-  })
+    router,
+    render: h => h(App)
+  }).$mount('app')
 })
