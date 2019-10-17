@@ -1,4 +1,6 @@
-# Dobra Noc
+# 🌘 Dobra Noc
+
+![Dobra Noc](https://media.licdn.com/dms/image/C4D1BAQG9QXopWM9EQA/company-background_10000/0?e=1571428800&v=beta&t=qI_rgKLvyaXr0TFPzfL2dNYLTmllcTZHw4Re04nS4iA)
 
 ## Installation
 
