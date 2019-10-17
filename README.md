@@ -4,7 +4,7 @@
 
 ## 🌗 Installation
 
-1. Install Linux.
+1. Install Linux. 🐧
 2. Checkout this repository.
 3. Install proper ruby version with `rbenv`.
 4. Install `bundler` gem globally.
