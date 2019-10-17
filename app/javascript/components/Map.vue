@@ -3,8 +3,8 @@
             <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
             <l-marker v-for="marker in markers"
                :key="marker.id"
-               :lat-lng="[marker.latitude, marker.longitude]">
-
+               :lat-lng="[marker.latitude, marker.longitude]"
+               @click="sendLocationId(marker.id)">
             </l-marker>
 
         </l-map>
@@ -15,6 +15,11 @@
 
     export default {
         components: { LMap, LTileLayer, LMarker },
+        methods: {
+          sendLocationId (locationId) {
+              this.$emit('location-id', locationId)
+          }
+        },
         data() {
             return {
                 map: null,
@@ -38,5 +43,4 @@
               }
           }
         }
-
 </script>
