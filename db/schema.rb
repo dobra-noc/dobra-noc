@@ -12,18 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_085427) do
-
-  create_table "equivalent_continuous_sound_levels", force: :cascade do |t|
-    t.float "laeq"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "location_id"
-    t.index ["location_id"], name: "index_equivalent_continuous_sound_levels_on_location_id"
-    t.index ["start_at", "end_at", "duration"], name: "date_unique_index", unique: true
+ActiveRecord::Schema.define(version: 20_191_021_111_726) do
+  create_table 'equivalent_continuous_sound_levels', force: :cascade do |t|
+    t.float 'laeq'
+    t.datetime 'start_at'
+    t.datetime 'end_at'
+    t.integer 'duration'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'location_id'
+    t.index ['location_id'], name: 'index_equivalent_continuous_sound_levels_on_location_id'
+    t.index %w[start_at end_at duration], name: 'date_unique_index', unique: true
   end
 
   create_table 'locations', force: :cascade do |t|
@@ -37,15 +36,12 @@ ActiveRecord::Schema.define(version: 2019_10_15_085427) do
     t.index %w[latitude longitude], name: 'index_locations_on_latitude_and_longitude', unique: true
   end
 
-  create_table 'locations', force: :cascade do |t|
-    t.string 'address', default: 'Nieznany'
-    t.text 'description'
-    t.string 'latitude'
-    t.string 'longitude'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['address'], name: 'index_locations_on_address', unique: true
-    t.index %w[latitude longitude], name: 'index_locations_on_latitude_and_longitude', unique: true
+  create_table 'settings', force: :cascade do |t|
+    t.string 'var', null: false
+    t.text 'value'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['var'], name: 'index_settings_on_var', unique: true
   end
 
   create_table 'sonometer_records', force: :cascade do |t|
