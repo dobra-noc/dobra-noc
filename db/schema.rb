@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_085427) do
+ActiveRecord::Schema.define(version: 2019_10_21_111726) do
 
   create_table "equivalent_continuous_sound_levels", force: :cascade do |t|
     t.float "laeq"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2019_10_15_085427) do
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_locations_on_address", unique: true
     t.index ["latitude", "longitude"], name: "index_locations_on_latitude_and_longitude", unique: true
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["var"], name: "index_settings_on_var", unique: true
   end
 
   create_table "sonometer_records", force: :cascade do |t|

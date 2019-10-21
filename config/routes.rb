@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       resources :equivalent_continuous_sound_levels, only: :show
       get 'equivalent_continuous_sound_levels/:id/:day', to: 'equivalent_continuous_sound_levels#get_by_day'
       resources :locations, only: :index
+      post 'settings/location', to: 'settings#set_location'
+      get 'settings/get-location', to: 'settings#get_location'
     end
   end
 
