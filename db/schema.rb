@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 20_191_004_100_938) do
     t.index %w[latitude longitude], name: 'index_locations_on_latitude_and_longitude', unique: true
   end
 
+  create_table 'locations', force: :cascade do |t|
+    t.string 'address', default: 'Nieznany'
+    t.text 'description'
+    t.string 'latitude'
+    t.string 'longitude'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['address'], name: 'index_locations_on_address', unique: true
+    t.index %w[latitude longitude], name: 'index_locations_on_latitude_and_longitude', unique: true
+  end
+
   create_table 'sonometer_records', force: :cascade do |t|
     t.decimal 'spl', precision: 4, scale: 1
     t.string 'filter', limit: 1
