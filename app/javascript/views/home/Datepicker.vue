@@ -21,47 +21,47 @@
 </template>
 
 <script>
-import { setupCalendar, DatePicker } from "v-calendar";
-import "v-calendar/lib/v-calendar.min.css";
-import CalendarNavigation from "./CalendarNavigation.vue";
+  import { setupCalendar, DatePicker } from "v-calendar"
+  import "v-calendar/lib/v-calendar.min.css"
+  import CalendarNavigation from "./CalendarNavigation.vue"
 
-setupCalendar({
-  firstDayOfWeek: 2,
-  navVisibility: "hover"
-});
+  setupCalendar({
+    firstDayOfWeek: 2,
+    navVisibility: "hover"
+  })
 
-export default {
-  components: {
-    "v-date-picker": DatePicker,
-    CalendarNavigation
-  },
-  props: {
-    availableDates: Array
-  },
-  data() {
-    return {
-      selectedValue: new Date(),
-      attrs: [
-        {
-          key: "today",
-          dates: "19-10-2019",
-          highlight: {
-            backgroundColor: "#ff8080"
-          }
-        }
-      ]
-    };
-  },
-  methods: {
-    sendDate(date) {
-      this.$emit("date-value", date);
+  export default {
+    components: {
+      "v-date-picker": DatePicker,
+      CalendarNavigation
     },
-    setDate(value) {
-      this.selectedValue = new Date(this.availableDates[value]);
-      this.sendDate(this.selectedValue);
+    props: {
+      availableDates: Array
+    },
+    data() {
+      return {
+        selectedValue: new Date(),
+        attrs: [
+          {
+            key: "today",
+            dates: "19-10-2019",
+            highlight: {
+              backgroundColor: "#ff8080"
+            }
+          }
+        ]
+      }
+    },
+    methods: {
+      sendDate(date) {
+        this.$emit("date-value", date)
+      },
+      setDate(value) {
+        this.selectedValue = new Date(this.availableDates[value])
+        this.sendDate(this.selectedValue)
+      }
     }
-  }
-};
+  };
 </script>
 <style>
 .date-container {
