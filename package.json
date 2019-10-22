@@ -3,8 +3,10 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
+    "babel-plugin-on-demand-import": "^1.1.1",
     "chart.js": "^2.8.0",
     "leaflet": "^1.5.1",
+    "v-calendar": "^0.9.7",
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-loader": "^15.7.0",
@@ -13,6 +15,8 @@
     "vue2-leaflet": "^2.1.1"
   },
   "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-plugin-vue": "^5.2.3",
     "webpack-dev-server": "^3.7.2"
   }
 }
