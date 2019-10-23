@@ -14,9 +14,7 @@
       :key="marker.id"
       :lat-lng="[marker.latitude, marker.longitude]"
       @click="sendLocationId(marker.id)"
-    >
-      <l-popup :content="marker.address"/>
-    </l-marker>
+    />
   </l-map>
 </template>
 

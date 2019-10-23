@@ -3,13 +3,13 @@
 		<div class="container">
 			<recording-button />
 		</div>
-		<Map @current-location="currentLocation" />
-		<div class="container">
-			<location-form :location="location" :latlng="latlng"/>
-		</div>
 		<div class="container">
 			<h3 class="text-center">Choose your location.</h3>
 			<location-table @update-location="updateLocation" />
+		</div>
+		<Map @current-location="currentLocation" />
+		<div class="container">
+			<location-form :location="location" :latlng="latlng"/>
 		</div>
 	</div>
 </template>

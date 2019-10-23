@@ -14,7 +14,9 @@ class SonometerListenerJob < ApplicationJob
         max_mode: record.settings.max_mode,
         measured_at: record.timestamp
       )
-      (Rails.env.raspbian? ? led.working : true) if sonometr_record.save!
+      if (sonometr_record.save! if Setting.is_recording)
+        (Rails.env.raspbian? ? led.working : true)
+      end
     end
 
     device.close
