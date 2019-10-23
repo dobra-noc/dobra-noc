@@ -3,8 +3,9 @@
 		<div class="container">
 			<recording-button />
 		</div>
+		<Map @current-location="currentLocation" />
 		<div class="container">
-			<location-form :location="location"/>
+			<location-form :location="location" :latlng="latlng"/>
 		</div>
 		<div class="container">
 			<h3 class="text-center">Choose your location.</h3>
@@ -17,6 +18,7 @@
 	import LocationTable from './LocationTable.vue'
 	import RecordingButton from './RecordingButton.vue'
 	import axios from 'axios'
+	import Map from './Map.vue'
 
 	axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
@@ -24,14 +26,19 @@
 		components: {
 			LocationForm,
 			LocationTable,
-			RecordingButton
+			RecordingButton,
+			Map
 		},
 		data: () => ({
-			location: null
+			location: null,
+			latlng: {}
 		}),
 		methods: {
 			updateLocation: function(value){
 				this.location = value
+			},
+			currentLocation: function(value) {
+				this.latlng = value
 			}
 		}
 	}

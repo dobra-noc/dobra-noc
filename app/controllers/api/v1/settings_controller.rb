@@ -4,14 +4,24 @@ module Api
   module V1
     class SettingsController < ApplicationController
       def set_location
-        Setting.address = location_params['address']
-        Setting.latitude = location_params['latitude']
-        Setting.longitude = location_params['longitude']
-        Setting.description = location_params['description']
+        if location_params
+          Setting.address = location_params['address']
+          Setting.latitude = location_params['latitude']
+          Setting.longitude = location_params['longitude']
+          Setting.description = location_params['description']
+          response_ok
+        else
+          render status: 422
+        end
       end
 
       def start_stop_recording
-        Setting.is_recording = location_params['is_recording']
+        if location_params['is_recording']
+          Setting.is_recording = location_params['is_recording']
+          response_ok
+        else
+          render status: 422
+        end
       end
 
       def is_recording
@@ -36,6 +46,10 @@ module Api
 
       def recording_params
         params.require(:setting).permit(:is_recording)
+      end
+
+      def response_ok
+        render status: 200
       end
     end
   end

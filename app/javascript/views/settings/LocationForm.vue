@@ -1,6 +1,6 @@
 <template>
 	<form>
-		<div class="form-row">
+		<div class="form-row" action="#">
 			<div class="col-md-12">
 				<label
 				  for="validationDefault01"
@@ -77,7 +77,8 @@
 			}
 		}),
 		props: {
-			location: Object
+			location: Object,
+			latlng: Object
 		},
 		watch: {
 			location: function(val) {
@@ -87,6 +88,10 @@
 					longitude: val.longitude,
 					latitude: val.latitude
 				}
+			},
+			latlng: function(val) {
+				this.locationSettings.latitude = val.latitude
+				this.locationSettings.longitude = val.longitude
 			}
 		},
 		methods: {

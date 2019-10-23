@@ -9,4 +9,6 @@ class Setting < RailsSettings::Base
   field :longitude,    type: :string,  default: ''
   field :description,  type: :text,    default: 'Nieznany'
   field :is_recording, type: :boolean, default: 0
+  field :username,     type: :string,  default: 'admin'
+  field :password,     type: :string,  default: 'adminpassword'
 end

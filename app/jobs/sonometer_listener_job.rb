@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class SonometerListenerJob < ApplicationJob
   queue_as :default
 
   def perform
-    led = Led.new(13,11,7) if Rails.env.raspbian?
+    led = Led.new(13, 11, 7) if Rails.env.raspbian?
     device = GM3156::Device.new(filter: :a, speed: :slow, max_mode: false, range: 0)
 
     device.read do |record|
@@ -12,7 +14,7 @@ class SonometerListenerJob < ApplicationJob
         max_mode: record.settings.max_mode,
         measured_at: record.timestamp
       )
-      (Rails.env.raspbian? ? led.working : true ) if  sonometr_record.save!
+      (Rails.env.raspbian? ? led.working : true) if sonometr_record.save!
     end
 
     device.close
