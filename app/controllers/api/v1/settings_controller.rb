@@ -9,33 +9,28 @@ module Api
           Setting.latitude = location_params['latitude']
           Setting.longitude = location_params['longitude']
           Setting.description = location_params['description']
-          response_ok
+
+          json_response(location_settings)
         else
-          render status: 422
+          render status: :bad_request
         end
       end
 
       def start_stop_recording
         if location_params['is_recording']
           Setting.is_recording = location_params['is_recording']
-          response_ok
+          json_response(Setting.is_recording)
         else
-          render status: 422
+          render status: :bad_request
         end
       end
 
       def is_recording
-        render json: Setting.is_recording
+        json_response(Setting.is_recording)
       end
 
       def get_location
-        data = {
-          address: Setting.address,
-          description: Setting.description,
-          latitude: Setting.latitude,
-          longitude: Setting.longitude
-        }
-        render json: data.as_json
+        json_response(location_settings)
       end
 
       private
@@ -48,8 +43,13 @@ module Api
         params.require(:setting).permit(:is_recording)
       end
 
-      def response_ok
-        render status: 200
+      def location_settings
+        {
+          address: Setting.address,
+          description: Setting.description,
+          latitude: Setting.latitude,
+          longitude: Setting.longitude
+        }
       end
     end
   end

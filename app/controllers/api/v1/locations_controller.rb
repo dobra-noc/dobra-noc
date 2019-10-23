@@ -3,6 +3,6 @@
 class Api::V1::LocationsController < ApplicationController
   def index
     data = Location.all
-    render json: data
+    json_response(data)
   end
 end
