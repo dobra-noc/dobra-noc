@@ -57,6 +57,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'factory_bot_rails'
   gem 'rspec'
+  gem 'shoulda-matchers'
   gem 'rspec-rails', '~> 3.8'
   gem 'selenium-webdriver'
 end

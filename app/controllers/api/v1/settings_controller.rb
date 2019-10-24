@@ -4,25 +4,17 @@ module Api
   module V1
     class SettingsController < ApplicationController
       def set_location
-        if location_params
-          Setting.address = location_params['address']
-          Setting.latitude = location_params['latitude']
-          Setting.longitude = location_params['longitude']
-          Setting.description = location_params['description']
+        Setting.address = location_params['address']
+        Setting.latitude = location_params['latitude']
+        Setting.longitude = location_params['longitude']
+        Setting.description = location_params['description']
 
-          json_response(location_settings)
-        else
-          render status: :bad_request
-        end
+        json_response(location_settings)
       end
 
       def start_stop_recording
-        if location_params['is_recording']
-          Setting.is_recording = location_params['is_recording']
-          json_response(Setting.is_recording)
-        else
-          render status: :bad_request
-        end
+        Setting.is_recording = location_params['is_recording']
+        json_response(Setting.is_recording)
       end
 
       def is_recording

@@ -74,8 +74,4 @@
 		color: #115555;
 		text-shadow: 0 0 5px #ffffee;
 	}
-
-	/* .chart {
-		margin-bottom: 50px;
-	} */
 </style>
