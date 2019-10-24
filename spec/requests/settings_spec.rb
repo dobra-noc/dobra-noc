@@ -105,5 +105,4 @@ RSpec.describe 'Settings API', type: :request do
       end
     end
   end
-
 end

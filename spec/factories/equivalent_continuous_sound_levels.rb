@@ -11,5 +11,6 @@ FactoryBot.define do
     duration { :hour }
     start_at { start_at }
     end_at { end_at }
+    association :location
   end
 end
