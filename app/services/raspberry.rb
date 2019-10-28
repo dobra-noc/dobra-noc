@@ -7,11 +7,11 @@ module Raspberry
       RPi::GPIO.setup pin, :as => :input
     end
 
-    def self.on?
+    def self.is_on?
       RPi::GPIO.high? @@pin
     end
   end
-  
+
   def self.is_raspberry?
     %x[uname -m].chomp == 'armv7l'
   end
