@@ -25,6 +25,7 @@ class SonometerListenerJob < ApplicationJob
         end
       else
         sonometr_record.save!
+      end
     end
 
     device.close
