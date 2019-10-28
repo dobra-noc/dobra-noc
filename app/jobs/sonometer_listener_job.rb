@@ -20,11 +20,12 @@ class SonometerListenerJob < ApplicationJob
         measured_at: record.timestamp
       )
       if is_raspberry
-        if Raspberry::Switch.is_on?
+        if Raspberry::Switchis_on?
           led.working if sonometr_record.save!
         end
       else
         sonometr_record.save!
+      end
     end
 
     device.close
