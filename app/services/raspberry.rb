@@ -1,5 +1,17 @@
 require 'rpi_gpio'
 module Raspberry
+  module Switch
+    def self.init_switch(pin)
+      @@pin = pin
+      RPi::GPIO.set_numbering :board
+      RPi::GPIO.setup pin, :as => :input
+    end
+
+    def self.on?
+      RPi::GPIO.high? @@pin
+    end
+  end
+  
   def self.is_raspberry?
     %x[uname -m].chomp == 'armv7l'
   end
