@@ -53,11 +53,14 @@ group :development, :raspbian do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
   gem 'factory_bot_rails'
   gem 'rspec'
   gem 'shoulda-matchers'
   gem 'rspec-rails', '~> 3.8'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
+  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 end

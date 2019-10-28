@@ -34,10 +34,10 @@
       }
     },
     watch: {
-      currentDate: function() {
+      currentDate: function(val) {
         let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate()
         let navigationPage = this.availableDates.indexOf(formattedCurrentDate)
-
+        console.log(formattedCurrentDate);
         if (navigationPage > 0)
           this.isDisabledPrevious = false
         if (navigationPage < this.availableDates.length - 1)

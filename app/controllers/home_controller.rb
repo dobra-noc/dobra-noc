@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :http_authenticate
-  def index; end
+  def index
+    http_authenticate
+  end
 
   private
 

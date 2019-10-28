@@ -8,7 +8,7 @@
 			/>
 		</section>
 
-		<section class="chart container">
+		<section>
 			<line-chart
 			  v-if="loaded"
 			  :chartdata="chart_data"

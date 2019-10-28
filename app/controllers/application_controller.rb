@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  
   rescue_from ActionController::ParameterMissing do |e|
     render plain: {error: 'Bad request'}.to_json, status: :bad_request, content_type: 'application/json'
   end
