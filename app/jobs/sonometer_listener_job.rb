@@ -4,7 +4,8 @@ class SonometerListenerJob < ApplicationJob
   queue_as :default
 
   def perform
-    led = Led.new(13, 11, 7) if Rails.env.raspbian?
+    is_raspberry = Raspberry.is_raspberry?
+    led = Raspberry::Led.new(13, 11, 7) if is_raspberry
     device = GM3156::Device.new(filter: :a, speed: :slow, max_mode: false, range: 0)
 
     device.read do |record|
@@ -14,10 +15,13 @@ class SonometerListenerJob < ApplicationJob
         max_mode: record.settings.max_mode,
         measured_at: record.timestamp
       )
-      (Rails.env.raspbian? ? led.working : true) if sonometr_record.save!
+      if is_raspberry
+        led.working if sonometr_record.save!
+      else
+        sonometr_record.save!
     end
 
     device.close
-    led.turn_off_pins
+    led.turn_off_pins if is_raspberry
   end
 end

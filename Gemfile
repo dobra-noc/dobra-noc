@@ -35,7 +35,7 @@ gem 'gm3156', '>= 0.0.3'
 gem 'rufus-scheduler'
 gem 'webpacker'
 
-group :development, :test, :raspbian do
+group :development, :test do
   gem 'pry-byebug', '>= 3.7.0'
 end
 
@@ -43,7 +43,7 @@ group :raspbian do
   gem 'rpi_gpio'
 end
 
-group :development, :raspbian do
+group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'overcommit', '>= 0.22.0'
   gem 'pronto-rubocop', '>= 0.10.0'
