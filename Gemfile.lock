@@ -58,8 +58,6 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     ast (2.4.0)
     bindex (0.8.1)
     bootsnap (1.4.5)
@@ -75,9 +73,6 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -118,7 +113,6 @@ GEM
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
     iniparse (1.4.4)
-    io-like (0.3.0)
     jaro_winkler (1.5.3)
     libusb (0.5.1)
       ffi (>= 1.0)
@@ -217,7 +211,6 @@ GEM
     regexp_parser (1.6.0)
     request_store (1.4.1)
       rack (>= 1.4)
-    rpi_gpio (0.3.3)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -318,7 +311,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara (>= 2.15)
-  chromedriver-helper
   factory_bot_rails
   faker
   fast_jsonapi (>= 1.5)
@@ -332,7 +324,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 6.0.0)
   rails-settings-cached (~> 2.0)
-  rpi_gpio
   rspec
   rspec-rails (~> 3.8)
   rufus-scheduler

@@ -14,7 +14,7 @@ class EquivalentContinuousSoundLevelCalculator
       measured_at: start_at..end_at
     ).pluck(:spl)
 
-    location = Location.find_or_create_by_address_and_by_description_and_by_longitude_and_by_latitude(
+    location = Location.find_or_create_by(
       address: Setting.address,
       description: Setting.description,
       longitude: Setting.longitude,

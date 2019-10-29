@@ -17,3 +17,5 @@
 
 1. Connect GM3156 sonometer via USB if you want to collect records.
 2. Run `foreman start`. It uses `Procfile` to run both backend (rails) and frontend (webpack-dev-server) at once.
+3. If you are using Raspberry Pi:
+	* `gem install rpi_gpio` 
