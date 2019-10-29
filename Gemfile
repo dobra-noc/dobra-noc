@@ -60,3 +60,7 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 end
+
+group :raspberry do
+  gem 'rpi_gpio'
+end
