@@ -6,7 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.4'
 
 gem 'puma', '~> 3.11'
+gem 'rack-cors'
 gem 'rails', '~> 6.0.0'
+gem 'rails-settings-cached', '~> 2.0'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
@@ -33,15 +35,11 @@ gem 'gm3156', '>= 0.0.3'
 gem 'rufus-scheduler'
 gem 'webpacker'
 
-group :development, :test, :raspbian do
+group :development, :test do
   gem 'pry-byebug', '>= 3.7.0'
 end
 
-group :raspbian do
-  gem 'rpi_gpio'
-end
-
-group :development, :raspbian do
+group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'overcommit', '>= 0.22.0'
   gem 'pronto-rubocop', '>= 0.10.0'
@@ -51,8 +49,18 @@ group :development, :raspbian do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
+  gem 'factory_bot_rails'
   gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'rspec-rails', '~> 3.8'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
+  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+end
+
+group :raspberry do
+  gem 'rpi_gpio'
 end

@@ -1,185 +1,77 @@
 <template>
-  <div class="container">
-    <header class="top">
-      <div class="moon">
-        <h1>Dobra Noc</h1>
-      </div>
-    </header>
-    <article class="content">
-      <h1>{{ address }}</h1>
-      <Datepicker
-        :available-dates="availableDates"
-        @date-value="getDate"
-      />
-      <section class="chart">
-        <line-chart
-          v-if="loaded"
-          :chartdata="chart_data"
-          :options="chart_options"
-        />
-      </section>
-      <section>
-        <Map @location-id="renderChart" />
-      </section>
-    </article>
-    <footer />
-  </div>
+	<div class="body">
+		<header class="top">
+			<div class="moon">
+				<h1>Dobra Noc</h1>
+			</div>
+		</header>
+		<navbar />
+		<router-view />
+		<footer />
+	</div>
 </template>
 
 <script>
-import LineChart from "./LineChart.js";
-import Map from "./Map.vue";
-import Datepicker from "./Datepicker.vue";
+	import Navbar from './Navbar.vue'
 
-export default {
-  name: "LineChartContainer",
-  components: {
-    LineChart,
-    Map,
-    Datepicker,
-  },
-  data: () => ({
-    locationId: null,
-    availableDates: null,
-    date: null,
-
-    address: null,
-    loaded: false,
-    chart_data: null,
-    chart_options: {
-      responsive: true,
-      aspectRatio: 3,
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [
-          {
-            type: "time",
-            time: {
-              unit: "hour"
-            }
-          }
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true
-            }
-          }
-        ]
-      }
-    }
-  }),
-  methods: {
-    fillChartData(data) {
-      this.chart_data = {
-        datasets: [
-          {
-            data: data.map(function(o) {
-              return {
-                t: new Date(o.start_at),
-                y: o.laeq
-              };
-            }),
-            fill: false,
-            label: "Equivalent continuous sound level",
-            backgroundColor: "#115555",
-            borderColor: "#115555"
-          }
-        ]
-      };
-    },
-    async renderChart(value) {
-      this.loaded = false;
-      this.locationId = await value;
-      try {
-        const response = await fetch(
-          `/api/v1/equivalent_continuous_sound_levels/${value}`
-        );
-        const data = await response.json();
-        this.availableDates = data[1]["dates"];
-        this.address = data[0][0]["location"]["address"];
-        this.fillChartData(data[0]);
-        this.loaded = true;
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    async getDate(value) {
-      this.loaded = false;
-      this.date = await value;
-      try {
-        const response = await fetch(
-          `/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`
-        );
-        const data = await response.json();
-        this.fillChartData(data);
-        this.loaded = true;
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  }
-};
+	export default {
+		name: 'App',
+		components: {
+			Navbar
+		}
+	}
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
+	@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap")
 
-body {
-  margin: 0;
-  padding: 0;
-}
+	body {
+		margin: 0;
+		padding: 0;
+	}
 
-.container {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #fffff2;
-}
+	.body {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #fffff2;
+	}
 
-.container .moon {
-  height: 100px;
-  width: 400px;
-  background-image: url("/assets/ksiezyc4.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-left: 80px;
-}
+	.body .moon {
+		height: 100%;
+		width: 40vh;
+		background-image: url("/assets/ksiezyc4.png");
+		background-size: cover;
+		background-repeat: no-repeat;
+		margin-left: 80px;
+	}
 
-.container header {
-  width: 100%;
-  height: 100px;
-  background-image: url("/assets/niebo.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+	.body header {
+		width: 100%;
+		height: 100px;
+		background-image: url("/assets/niebo.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 
-.container footer {
-  width: 100%;
-  height: 300px;
-  background-image: url("/assets/casmirvs.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+	.body footer {
+		width: 100%;
+		height: 300px;
+		background-image: url("/assets/casmirvs.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
 
-.container header h1 {
-  margin-top: 26px;
-  margin-left: 80px;
-  font-family: "Comfortaa", cursive;
-  /* nice */
-  font-weight: 100;
-  font-size: 44px;
-  display: inline-block;
-  /*color: #113344;*/
-  color: #115555;
-  text-shadow: 0 0 5px #ffffee;
-}
-
-.content {
-  margin: 50px;
-}
-
-.chart {
-  margin-bottom: 50px;
-}
+	.body header h1 {
+		margin-top: 26px;
+		margin-left: 80px;
+		font-family: "Comfortaa", cursive;
+		/* nice */
+		font-weight: 100;
+		font-size: 44px;
+		display: inline-block;
+		/*color: #113344;*/
+		color: #115555;
+		text-shadow: 0 0 5px #ffffee;
+	}
 </style>
