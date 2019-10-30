@@ -52,13 +52,13 @@ group :test do
   gem 'factory_bot_rails'
   gem 'rspec'
   gem 'shoulda-matchers'
-  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'capybara-screenshot'
 end
 
 group :raspberry do

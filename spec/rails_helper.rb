@@ -1,13 +1,14 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'capybara-screenshot/rspec'
+require 'support/chromedriver'
+require 'support/auth'
 
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
-# Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -45,6 +46,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include FactoryBot::Syntax::Methods
   config.include RequestSpecHelper, type: :request
+  config.include Auth
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
