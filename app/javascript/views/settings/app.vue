@@ -15,8 +15,9 @@
 	import LocationTable from './LocationTable.vue'
 	import axios from 'axios'
 	import Map from './Map.vue'
-
-	axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+	
+	if (document.querySelector('meta[name="csrf-token"]'))
+		axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
 	export default {
 		components: {

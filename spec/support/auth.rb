@@ -1,6 +1,7 @@
 module Auth
-  def basic_auth(user, password)
-    encoded_login = ["#{user}:#{password}"].pack("m*")
-    page.driver.header 'Authorization', "Basic #{encoded_login}"
+  def basic_auth(path)
+    username = 'admin'
+    password = 'adminpassword'
+    visit "http://#{username}:#{password}@#{Capybara.current_session.server.host}:#{Capybara.current_session.server.port}#{path}"
   end
 end
