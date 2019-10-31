@@ -94,7 +94,7 @@
 		},
 		methods: {
 			setLocationSettings: function () {
-				axios.post('/api/v1/settings/location', {
+				axios.post(`http://${window.location.host}/api/v1/settings/location`, {
 					setting: {
 						address: this.locationSettings['address'],
 						description: this.locationSettings['description'],
@@ -109,7 +109,7 @@
 			}
 		},
 		mounted: async function () {
-			const response = await fetch(`/api/v1/settings/get-location`);
+			const response = await fetch(`http://${window.location.host}/api/v1/settings/get-location`);
 			const data = await response.json();
 			this.locationSettings = {
 				address: data['address'],

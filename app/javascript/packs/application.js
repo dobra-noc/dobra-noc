@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue'
 import App from '../components/app.vue'
 import router from '../router.js'
 import { Icon }  from 'leaflet'
@@ -26,5 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
     router,
     render: h => h(App)
   }).$mount('app')
-  console.log(app);
 })

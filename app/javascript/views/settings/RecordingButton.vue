@@ -27,7 +27,7 @@
     methods: {
       getRecordingStatus: async function() {
         try {
-          const response = await fetch('/api/v1/settings/is-recording')
+          const response = await fetch(`http://${window.location.host}/api/v1/settings/is-recording`)
           this.isRecording = await response.json()
         } catch (e) {
           console.error(e)
@@ -36,7 +36,7 @@
       setRecordingStatus: async function() {
         this.isRecording = this.isRecording ? false : true
 
-        axios.post('/api/v1/settings/recording', {
+        axios.post(`http://${window.location.host}/api/v1/settings/recording`, {
 					setting: {
 						is_recording: this.isRecording
 					}

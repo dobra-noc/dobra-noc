@@ -41,7 +41,7 @@
 		async mounted() {
 			this.loaded = false
 			try {
-				await fetch("/api/v1/locations").then(response => response.json()).then(data => (this.locations = data))
+				await fetch(`http://${window.location.host}/api/v1/locations`).then(response => response.json()).then(data => (this.locations = data))
 				this.loaded = true
 			} catch (e) {
 				console.log(e)

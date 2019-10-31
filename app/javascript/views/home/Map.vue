@@ -43,7 +43,7 @@
     async mounted() {
       this.loaded = false
       try {
-        await fetch("/api/v1/locations")
+        await fetch(`http://${window.location.host}/api/v1/locations`)
           .then(response => response.json())
           .then(data => (this.markers = data));
         this.loaded = true

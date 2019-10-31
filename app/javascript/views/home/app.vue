@@ -87,7 +87,7 @@
 				this.loaded = false
 				this.locationId = await value
 				try {
-					const response = await fetch(`/api/v1/equivalent_continuous_sound_levels/${value}`)
+					const response = await fetch(`http://${window.location.host}/api/v1/equivalent_continuous_sound_levels/${value}`)
 					const data = await response.json()
 					this.availableDates = data[1]["dates"]
 					this.address = data[0][0]["location"]["address"]
@@ -101,7 +101,7 @@
 				this.loaded = false
 				this.date = await value
 				try {
-					const response = await fetch(`/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`)
+					const response = await fetch(`http://${window.location.host}/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`)
 					const data = await response.json()
 					this.fillChartData(data)
 					this.loaded = true
