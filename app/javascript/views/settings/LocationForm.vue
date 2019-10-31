@@ -8,6 +8,7 @@
 				>Address</label>
 				<input
 				  type="text"
+					name="address"
 				  class="form-control form-control-lg"
 				  id="validationDefault01"
 				  placeholder="Address"
@@ -24,6 +25,7 @@
 				>Latitude</label>
 				<input
 				  type="text"
+					name="latitude"
 				  class="form-control form-control-lg"
 				  id="validationDefault04"
 				  placeholder="Latitude"
@@ -38,6 +40,7 @@
 				>Longitude</label>
 				<input
 				  type="text"
+					name="longitude"
 				  class="form-control form-control-lg"
 				  id="validationDefault05"
 				  placeholder="Longitude"
@@ -49,6 +52,7 @@
 		<div class="form-row md-3">
 			<label class="col-form-label col-form-label-lg">Description</label>
 			<textarea
+				name="description"
 			  class="form-control form-control-lg"
 			  placeholder="Description"
 			  v-model="locationSettings['description']"

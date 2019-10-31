@@ -58,7 +58,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  # gem "capybara-webkit"
   gem 'capybara-screenshot'
 end
 
