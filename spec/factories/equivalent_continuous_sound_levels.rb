@@ -1,16 +1,15 @@
-date = DateTime.parse Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default)
-rnd = rand(1..100)
-
-start_at = date.beginning_of_hour + rnd.hours
-end_at = date.end_of_hour + rnd.hours
+date = DateTime.parse Faker::Time.between(from: DateTime.now + 1.day, to: DateTime.now + 40.days, format: :default)
 
 FactoryBot.define do
   factory :equivalent_continuous_sound_level do
     laeq { rand * (80 - 30) + 30 }
     location_id { nil }
     duration { :hour }
-    start_at { start_at }
-    end_at { end_at }
-    association :location
+    sequence :start_at do |n|
+       date.beginning_of_hour + n.hours
+    end
+    sequence :end_at do |n|
+      date.end_of_hour + n.hours
+    end
   end
 end
