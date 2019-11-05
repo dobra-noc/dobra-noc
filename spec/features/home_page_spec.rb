@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature "Home page management", type: :feature, js: true do
+RSpec.feature 'Home page management', type: :feature, js: true do
   let(:location) { create(:location) }
   let(:sound_level) do
     create(
@@ -14,8 +14,12 @@ RSpec.feature "Home page management", type: :feature, js: true do
     sound_level
     basic_auth('/')
   end
-  scenario "Render map, markers and chart"do
-    find('img', class: "leaflet-marker-icon").click
-    page.should have_css('canvas#line-chart')
+  scenario 'Render map, markers and chart'do
+    find('img', class: 'leaflet-marker-icon').click
+    expect(page).to have_css('canvas#line-chart')
+  end
+
+  scenario 'Load all locations' do
+    expect(page).to have_selector('img.leaflet-marker-icon', count: Location.count)
   end
 end
