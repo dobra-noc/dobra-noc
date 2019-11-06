@@ -59,6 +59,7 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'capybara-screenshot'
+  gem 'dotdiff'
 end
 
 group :raspberry do

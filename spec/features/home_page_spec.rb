@@ -12,6 +12,7 @@ RSpec.feature 'Home page management', type: :feature, js: true do
   before do
     sound_levels
     basic_auth('/')
+    page.driver.browser.manage.window.resize_to(1280, 1024)
   end
   scenario 'Render map, markers and chart'do
     find('img', class: 'leaflet-marker-icon').click
@@ -20,6 +21,22 @@ RSpec.feature 'Home page management', type: :feature, js: true do
 
   scenario 'Load all locations' do
     expect(page).to have_selector('img.leaflet-marker-icon', count: Location.count)
+  end
+
+  describe 'Chart' do
+    scenario 'Did root chart is correct' do
+      find('img', class: 'leaflet-marker-icon').click
+      page.execute_script "window.scrollBy(0,400)"
+      binding.pry
+      expect(find('canvas#line-chart')).to match_image('TestRootChart')
+    end
+    scenario 'Did root chart is correct' do
+      find('img', class: 'leaflet-marker-icon').click
+      click_button 'previous'
+      page.execute_script "window.scrollBy(0,400)"
+
+      expect(find('canvas#line-chart')).to match_image('TestPreviousChart')
+    end
   end
 
   describe 'Calendar navigation buttons' do
