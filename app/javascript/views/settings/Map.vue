@@ -43,7 +43,7 @@
         tileLayer: null,
         current: false,
         layers: [],
-        zoom: 1,
+        zoom: 0,
         center: L.latLng(50.0523853, 19.9441151),
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
         attribution:

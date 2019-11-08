@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Home page management', type: :feature, js: true do
-  let!(:location) { create(:location) }
+  let!(:location) { create(:location, latitude: '49.83798245308484', longitude: '18.984375000000004') }
   let!(:sound_levels) do
     create_list(
       :equivalent_continuous_sound_level,
@@ -9,13 +9,15 @@ RSpec.feature 'Home page management', type: :feature, js: true do
       location_id: location.id
     )
   end
-  before do
+  before(:each) do
     sound_levels
     basic_auth('/')
     page.driver.browser.manage.window.resize_to(1280, 1024)
   end
+
   scenario 'Render map, markers and chart'do
     find('img', class: 'leaflet-marker-icon').click
+
     expect(page).to have_css('canvas#line-chart')
   end
 
@@ -26,14 +28,14 @@ RSpec.feature 'Home page management', type: :feature, js: true do
   describe 'Chart' do
     scenario 'Did root chart is correct' do
       find('img', class: 'leaflet-marker-icon').click
-      page.execute_script "window.scrollBy(0,400)"
-      binding.pry
+      execute_script("arguments[0].scrollIntoView();",find('canvas#line-chart'))
+
       expect(find('canvas#line-chart')).to match_image('TestRootChart')
     end
-    scenario 'Did root chart is correct' do
+    scenario 'Did day chart is correct' do
       find('img', class: 'leaflet-marker-icon').click
       click_button 'previous'
-      page.execute_script "window.scrollBy(0,400)"
+      execute_script("arguments[0].scrollIntoView();",find('canvas#line-chart'))
 
       expect(find('canvas#line-chart')).to match_image('TestPreviousChart')
     end

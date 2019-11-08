@@ -13,15 +13,23 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
 
   let(:settings) do
     {
-      address: 'addresss',
+      address: 'woooooooooorkkkkkk',
       latitude: '20.22222',
       longitude: '10.1111',
       description: 'address description'
     }
   end
 
-  before do
+  before(:each) do
     basic_auth('/settings')
+    page.driver.browser.manage.window.resize_to(1280, 1024)
+  end
+
+  scenario 'Get latlong from map' do
+    find('div.vue2leaflet-map').click(0,0)
+
+    expect(find_field('latitude').value).to eq '49.83798245308484'
+    expect(find_field('longitude').value).to eq '18.984375000000004'
   end
 
   scenario 'Send settings data correctly' do
@@ -39,14 +47,6 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
 
   scenario 'Load all locations to select' do
     expect(page).to have_selector('select option', count: Location.count)
-  end
-
-  scenario 'Get latlong from map' do
-    map = find('div.vue2leaflet-map').native
-    page.driver.browser.action.move_to(map, 550, 250).click.perform
-
-    expect(find_field('latitude').value).to eq '21.94304553343818'
-    expect(find_field('longitude').value).to eq '15.820312500000002'
   end
 
   scenario 'Load all location' do

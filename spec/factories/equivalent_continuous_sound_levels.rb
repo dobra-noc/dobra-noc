@@ -1,8 +1,10 @@
-date = DateTime.parse Faker::Time.between(from: DateTime.now + 1.day, to: DateTime.now + 40.days, format: :default)
+date = DateTime.now
 
 FactoryBot.define do
   factory :equivalent_continuous_sound_level do
-    laeq { rand * (80 - 30) + 30 }
+    sequence :laeq do |n|
+      30 + n * 1.2
+    end
     location_id { nil }
     duration { :hour }
     sequence :start_at do |n|
