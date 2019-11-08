@@ -50,17 +50,6 @@
           '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
         markers: []
       }
-    },
-    async mounted() {
-      this.loaded = false
-      try {
-        await fetch(`http://${window.location.host}/api/v1/locations`)
-          .then(response => response.json())
-          .then(data => (this.markers = data));
-        this.loaded = true
-      } catch (e) {
-        console.log(e)
-      }
     }
   }
 </script>

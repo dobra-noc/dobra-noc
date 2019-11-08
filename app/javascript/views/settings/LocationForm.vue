@@ -26,6 +26,7 @@
 				<input
 				  type="text"
 					name="latitude"
+					disabled=true
 				  class="form-control form-control-lg"
 				  id="validationDefault04"
 				  placeholder="Latitude"
@@ -41,6 +42,7 @@
 				<input
 				  type="text"
 					name="longitude"
+					disabled=true
 				  class="form-control form-control-lg"
 				  id="validationDefault05"
 				  placeholder="Longitude"

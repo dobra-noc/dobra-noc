@@ -8,7 +8,7 @@
 			/>
 		</section>
 
-		<section>
+		<section class="container">
 			<line-chart
 			  v-if="loaded"
 			  :chartdata="chart_data"
@@ -41,10 +41,6 @@
 			loaded: false,
 			chart_data: null,
 			chart_options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				aspectRatio: 3,
-				maintainAspectRatio: false,
 				scales: {
 					xAxes: [
 						{
@@ -61,7 +57,9 @@
 							}
 	  				}
 					]
-				}
+				},
+				responsive: true,
+				maintainAspectRatio: true,
 			}
 		}),
 		methods: {
@@ -112,3 +110,6 @@
 		}
 	}
 </script>
+
+<style>
+</style>
