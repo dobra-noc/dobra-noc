@@ -1,6 +1,6 @@
 # 🌘 Dobra Noc
 
-![Dobra Noc](https://i.ibb.co/RHCb8F1/Zrzut-ekranu-2019-11-8-o-13-45-54.png)
+![Dobra Noc](https://ibb.co/w0XNMN5)
 
 ## 🌗 Installation
 
