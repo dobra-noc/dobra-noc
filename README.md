@@ -13,16 +13,16 @@
 7. Run `rails db:migrate`.
 8. If I missed something, please edit this list!
 
-## Running
+## 🌖 Running
 
 1. Connect GM3156 sonometer via USB if you want to collect records.
 2. Run `foreman start`. It uses `Procfile` to run both backend (rails) and frontend (webpack-dev-server) at once.
 
-## User Interface
+## 🌕 User Interface
 
 ![](https://i.ibb.co/RHCb8F1/Zrzut-ekranu-2019-11-8-o-13-45-54.png)
 
-### User manual
+### User Manual
 
 * [Home Page](https://github.com/ciembor/dobra-noc/wiki/Home-Page)
 * [Settings Page](https://github.com/ciembor/dobra-noc/wiki/Settings-page)
