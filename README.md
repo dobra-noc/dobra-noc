@@ -1,6 +1,6 @@
 # 🌘 Dobra Noc
 
-![Dobra Noc](https://media.licdn.com/dms/image/C4D1BAQG9QXopWM9EQA/company-background_10000/0?e=1571428800&v=beta&t=qI_rgKLvyaXr0TFPzfL2dNYLTmllcTZHw4Re04nS4iA)
+![Dobra Noc](https://i.ibb.co/RHCb8F1/Zrzut-ekranu-2019-11-8-o-13-45-54.png)
 
 ## 🌗 Installation
 
@@ -19,10 +19,6 @@
 2. Run `foreman start`. It uses `Procfile` to run both backend (rails) and frontend (webpack-dev-server) at once.
 
 ## 🌕 User Interface
-
-![](https://i.ibb.co/RHCb8F1/Zrzut-ekranu-2019-11-8-o-13-45-54.png)
-
-### User Manual
 
 * [Home Page](https://github.com/ciembor/dobra-noc/wiki/Home-Page)
 * [Settings Page](https://github.com/ciembor/dobra-noc/wiki/Settings-page)
