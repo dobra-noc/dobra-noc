@@ -1,6 +1,6 @@
 # 🌘 Dobra Noc
 
-![Dobra Noc](https://ibb.co/w0XNMN5)
+![Dobra Noc](https://i.ibb.co/xC0SJSx/dobranoc.jpg)
 
 ## 🌗 Installation
 
