@@ -11,8 +11,8 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
 
   let(:settings) do
     {
-      address: 'woooooooooorkkkkkk',
-      description: 'address description'
+      address: Faker::Address.street_address,
+      description: Faker::Address.street_name
     }
   end
 
@@ -30,8 +30,9 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
   end
 
   scenario 'Send settings data correctly' do
-    fill_in 'address', with: settings[:address]
-    fill_in 'description', with: settings[:description]
+    sleep 1
+    fill_in('address', with: settings[:address])
+    fill_in('description', with: settings[:description])
     click_button('Submit location')
 
     expect(page).to have_field('address', with: settings[:address])
