@@ -110,6 +110,3 @@
 		}
 	}
 </script>
-
-<style>
-</style>

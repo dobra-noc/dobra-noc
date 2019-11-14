@@ -5,17 +5,13 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
   let(:sound_level) do
     create(
       :equivalent_continuous_sound_level,
-      start_at: DateTime.now.beginning_of_hour,
-      end_at: DateTime.now.end_of_hour,
-      location: location
+      location_id: location.id
     )
   end
 
   let(:settings) do
     {
       address: 'woooooooooorkkkkkk',
-      latitude: '20.22222',
-      longitude: '10.1111',
       description: 'address description'
     }
   end
@@ -26,23 +22,20 @@ RSpec.feature 'Settings page management', type: :feature, js: true do
   end
 
   scenario 'Get latlong from map' do
+    sleep 1
     find('div.vue2leaflet-map').click(0,0)
 
-    expect(find_field('latitude').value).to eq '49.83798245308484'
-    expect(find_field('longitude').value).to eq '18.984375000000004'
+    expect(page).to have_field('latitude', with: '49.83798245308484', disabled: true)
+    expect(page).to have_field('longitude', with: '18.984375000000004', disabled: true)
   end
 
   scenario 'Send settings data correctly' do
     fill_in 'address', with: settings[:address]
-    fill_in 'longitude', with: settings[:longitude]
-    fill_in 'latitude', with: settings[:latitude]
     fill_in 'description', with: settings[:description]
     click_button('Submit location')
 
-    expect(find_field('address').value).to eq settings[:address]
-    expect(find_field('longitude').value).to eq settings[:longitude]
-    expect(find_field('latitude').value).to eq settings[:latitude]
-    expect(find_field('description').value).to eq settings[:description]
+    expect(page).to have_field('address', with: settings[:address])
+    expect(page).to have_field('description', with: settings[:description])
   end
 
   scenario 'Load all locations to select' do

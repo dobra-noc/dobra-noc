@@ -29,6 +29,7 @@ RSpec.feature 'Home page management', type: :feature, js: true do
     scenario 'Did root chart is correct' do
       find('img', class: 'leaflet-marker-icon').click
       execute_script("arguments[0].scrollIntoView();",find('canvas#line-chart'))
+      sleep 1
 
       expect(find('canvas#line-chart')).to match_image('TestRootChart')
     end
@@ -36,6 +37,7 @@ RSpec.feature 'Home page management', type: :feature, js: true do
       find('img', class: 'leaflet-marker-icon').click
       click_button 'previous'
       execute_script("arguments[0].scrollIntoView();",find('canvas#line-chart'))
+      sleep 1
 
       expect(find('canvas#line-chart')).to match_image('TestPreviousChart')
     end

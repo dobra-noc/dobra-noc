@@ -2,16 +2,10 @@ date = DateTime.now
 
 FactoryBot.define do
   factory :equivalent_continuous_sound_level do
-    sequence :laeq do |n|
-      30 + n * 1.2
-    end
+    sequence(:laeq, 2) { |n| 30 + n }
     location_id { nil }
     duration { :hour }
-    sequence :start_at do |n|
-       date.beginning_of_hour + n.hours
-    end
-    sequence :end_at do |n|
-      date.end_of_hour + n.hours
-    end
+    sequence(:start_at) { |n| (date+ n.hours).beginning_of_hour }
+    sequence(:end_at) { |n| (date + n.hours).end_of_hour }
   end
 end
