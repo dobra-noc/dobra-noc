@@ -1,0 +1,3 @@
+[submodule "vendor/dobra-noc-recorder"]
+	path = vendor/dobra-noc-recorder
+	url = https://github.com/ciembor/dobra-noc-recorder.git
