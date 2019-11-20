@@ -1,0 +1,17 @@
+[Unit]
+Description=dobranoc recorder boot
+After=network.target
+After=local-fs.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/dobra-noc/vendor/dobra-noc-recorder
+ExecStart=/bin/bash -lc 'mix start'
+TimeoutSec=180
+RestartSec=180s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

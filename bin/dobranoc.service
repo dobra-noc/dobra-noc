@@ -1,0 +1,17 @@
+[Unit]
+Description=dobranoc server boot
+After=network.target
+After=local-fs.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/dobra-noc
+ExecStart=/home/pi/.rbenv/bin/rbenv exec bundle exec rails s -p 3000 -b 0.0.0.0
+TimeoutSec=180
+RestartSec=180s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
