@@ -35,9 +35,8 @@
     },
     watch: {
       currentDate: function(val) {
-        let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate()
+        let formattedCurrentDate = this.formatCurrentDate(this.currentDate)
         let navigationPage = this.availableDates.indexOf(formattedCurrentDate)
-        console.log(formattedCurrentDate);
         if (navigationPage > 0)
           this.isDisabledPrevious = false
         if (navigationPage < this.availableDates.length - 1)
@@ -49,8 +48,18 @@
       }
     },
     methods: {
+      formatCurrentDate: function(date) {
+        return date.getFullYear() + "-" + this.leadingZero((date.getMonth() + 1)) + "-" + this.leadingZero(date.getDate())
+      },
+      leadingZero: function(date) {
+        if (date < 10) {
+          return "0" + date
+        }else{
+          return date
+        }
+      },
       navigation: function(type) {
-        let formattedCurrentDate = this.currentDate.getFullYear() + "-" + (this.currentDate.getMonth() + 1) + "-" + this.currentDate.getDate()
+        let formattedCurrentDate = this.formatCurrentDate(this.currentDate)
         if (type == "previous") {
           let navigationPage = this.availableDates.indexOf(formattedCurrentDate) - 1
           if (navigationPage <= 0) {

@@ -17,20 +17,23 @@ RSpec.describe 'EquivalentContinuousSoundLevels API', type: :request do
       [
         {
           "laeq"=>sound_level.laeq,
-          "start_at"=>sound_level.start_at,
+          "start_at"=>sound_level.start_at.strftime('%FT%T.%LZ'),
           "location"=>{
             "address"=>location.address
           }
         }
       ],
       {
-        "dates"=>sound_level.start_at.strftime('%F')
+        "dates"=>[sound_level.start_at.strftime('%F')]
       }
     ]
   end
 
   describe 'GET equivalent_continuous_sound_levels show' do
-    before { get "/api/v1/equivalent_continuous_sound_levels/#{location_id}" }
+    before do
+      sound_level
+      get "/api/v1/equivalent_continuous_sound_levels/#{location_id}"
+    end
 
     context 'when the record exists' do
       it 'returns location' do

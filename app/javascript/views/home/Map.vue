@@ -32,7 +32,7 @@
         map: null,
         tileLayer: null,
         layers: [],
-        zoom: 18,
+        zoom: 0,
         center: L.latLng(50.0523853, 19.9441151),
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
         attribution:
@@ -43,7 +43,7 @@
     async mounted() {
       this.loaded = false
       try {
-        await fetch("/api/v1/locations")
+        await fetch(`http://${window.location.host}/api/v1/locations`)
           .then(response => response.json())
           .then(data => (this.markers = data));
         this.loaded = true

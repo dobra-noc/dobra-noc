@@ -8,6 +8,7 @@
 				>Address</label>
 				<input
 				  type="text"
+					name="address"
 				  class="form-control form-control-lg"
 				  id="validationDefault01"
 				  placeholder="Address"
@@ -24,6 +25,8 @@
 				>Latitude</label>
 				<input
 				  type="text"
+					name="latitude"
+					disabled=true
 				  class="form-control form-control-lg"
 				  id="validationDefault04"
 				  placeholder="Latitude"
@@ -38,6 +41,8 @@
 				>Longitude</label>
 				<input
 				  type="text"
+					name="longitude"
+					disabled=true
 				  class="form-control form-control-lg"
 				  id="validationDefault05"
 				  placeholder="Longitude"
@@ -49,6 +54,7 @@
 		<div class="form-row md-3">
 			<label class="col-form-label col-form-label-lg">Description</label>
 			<textarea
+				name="description"
 			  class="form-control form-control-lg"
 			  placeholder="Description"
 			  v-model="locationSettings['description']"
@@ -64,8 +70,6 @@
 
 <script>
 	import axios from 'axios'
-
-	axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
 	export default {
 		data: () => ({
@@ -96,7 +100,7 @@
 		},
 		methods: {
 			setLocationSettings: function () {
-				axios.post('/api/v1/settings/location', {
+				axios.post(`http://${window.location.host}/api/v1/settings/location`, {
 					setting: {
 						address: this.locationSettings['address'],
 						description: this.locationSettings['description'],
@@ -111,7 +115,7 @@
 			}
 		},
 		mounted: async function () {
-			const response = await fetch(`/api/v1/settings/get-location`);
+			const response = await fetch(`http://${window.location.host}/api/v1/settings/get-location`);
 			const data = await response.json();
 			this.locationSettings = {
 				address: data['address'],

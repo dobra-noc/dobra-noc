@@ -8,7 +8,7 @@
 			/>
 		</section>
 
-		<section>
+		<section class="container">
 			<line-chart
 			  v-if="loaded"
 			  :chartdata="chart_data"
@@ -41,10 +41,6 @@
 			loaded: false,
 			chart_data: null,
 			chart_options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				aspectRatio: 3,
-				maintainAspectRatio: false,
 				scales: {
 					xAxes: [
 						{
@@ -61,7 +57,9 @@
 							}
 	  				}
 					]
-				}
+				},
+				responsive: true,
+				maintainAspectRatio: true,
 			}
 		}),
 		methods: {
@@ -87,7 +85,7 @@
 				this.loaded = false
 				this.locationId = await value
 				try {
-					const response = await fetch(`/api/v1/equivalent_continuous_sound_levels/${value}`)
+					const response = await fetch(`http://${window.location.host}/api/v1/equivalent_continuous_sound_levels/${value}`)
 					const data = await response.json()
 					this.availableDates = data[1]["dates"]
 					this.address = data[0][0]["location"]["address"]
@@ -101,7 +99,7 @@
 				this.loaded = false
 				this.date = await value
 				try {
-					const response = await fetch(`/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`)
+					const response = await fetch(`http://${window.location.host}/api/v1/equivalent_continuous_sound_levels/${this.locationId}/${value}`)
 					const data = await response.json()
 					this.fillChartData(data)
 					this.loaded = true
